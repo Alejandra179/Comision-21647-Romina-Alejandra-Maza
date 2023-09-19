@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
+app.use(require('./routes'))
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });

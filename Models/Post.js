@@ -28,6 +28,8 @@ Post.init({
     }
 
 )
+
+sequelize.sync().then(()=>console.log("Modelos synchronized with database")).catch(err=>console.error('Unable to sync models with database:',err))
 sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
