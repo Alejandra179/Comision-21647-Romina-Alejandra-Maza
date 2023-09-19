@@ -1,6 +1,8 @@
 const {Sequelize, Model, DataTypes} = require('sequelize');
-const sequelize = new Sequelize('my_db', 'root', '', {
-    host: 'localhost',
+const dotenv = require('dotenv');
+dotenv.config();
+const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.USER_DATABASE, '', {
+    host: process.env.HOST,
     dialect: 'mysql',
   });
 
