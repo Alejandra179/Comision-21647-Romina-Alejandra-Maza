@@ -20,6 +20,7 @@ app.use(express.json());
 
 // Configure the EJS middleware
 app.set('view engine', 'ejs');
+app.set('views', './Views');
 
 // Define a route for the root path ('/') that sends a response to the client.
 

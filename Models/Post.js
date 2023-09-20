@@ -21,7 +21,7 @@ Post.init({
         allowNull:false
     },
     content: DataTypes.STRING(70),
-    linkUrl:DataTypes.STRING
+    url: DataTypes.STRING
 },{
         sequelize,
         modelName:'post',

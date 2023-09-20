@@ -3,11 +3,7 @@ const Post = require('./Models/Post');
 const CreatePostController = async (req,res)=>{
     const { title,content, url} = req.body
     try{
-        const post = await Post.create({
-            title: title,
-            content: content,
-            linkUrl: url
-        })
+        const post = await Post.create({ title, content, url })
         res.json(post)
     }catch(error){
         console.log(error);
@@ -18,7 +14,7 @@ const CreatePostController = async (req,res)=>{
 const getPostsController = async (req,res)=>{
     try{
         const posts = await  Post.findAll()
-        res.json(posts)
+        return res.render('index',{posts})
     }catch(error){
         console.log(error);
         res.status(500).json({mensaje:'Hubo un error al obtener los posts'})
@@ -42,13 +38,9 @@ const getPostController = async (req,res)=>{
 
 const updatePostController = async (req,res)=>{
     const {id} = req.params;
-    const { title,content, url} = req.body
+  
     try{
-        await Post.update({
-        title:title,
-        content:title,
-        linkUrl:url
-        },{
+        await Post.update(req.body,{
             where: {id }
         })
         res.json({mensaje:'Post actualizado correctamente'})
@@ -60,7 +52,7 @@ const updatePostController = async (req,res)=>{
 const deletePostController = async(req,res) =>{
     const {id} = req.params;
     try{
-        await Post.destroy ({where:{id}})
+        await Post.destroy({where:{id}})
         res.json({mensaje: 'Post eliminado correctamente'})
     }catch(error){
         console.log(error);
